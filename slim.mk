@@ -8,11 +8,15 @@ $(call inherit-product, device/samsung/n8000/n8000.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/slim/config/common_full_phone.mk)
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1024
+TARGET_SCREEN_WIDTH := 600
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := n8000
-PRODUCT_NAME := lineage_n8000
+PRODUCT_NAME := slim_n8000
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := GT-N8000
 PRODUCT_MANUFACTURER := samsung
