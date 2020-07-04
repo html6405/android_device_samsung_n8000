@@ -95,6 +95,7 @@ on boot
 service sec_keyboard /system/bin/sec_keyboard /dev/ttySAC2
 	class core
 	group system
+	seclabel u:r:sec_keyboard:s0
 
 #cbd
 service cpboot-daemon /system/bin/cbd -d -p7
