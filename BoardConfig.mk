@@ -17,8 +17,6 @@
 # Include n80xx BoardConfigCommon
 -include device/samsung/n80xx-common/BoardConfigCommon.mk
 
-TARGET_BUILD_VARIANT:=user
-
 # assert
 TARGET_OTA_ASSERT_DEVICE := c0,p4noterf,p4noterfxx,n8000,GT-N8000
 N8000 := true
