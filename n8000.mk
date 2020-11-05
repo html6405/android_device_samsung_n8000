@@ -18,27 +18,14 @@ $(call inherit-product, device/samsung/n80xx-common/n80xx-common.mk)
 
 LOCAL_PATH := device/samsung/n8000
 
-
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Rootdir
 PRODUCT_COPY_FILES += \
-    device/samsung/n8000/rootdir/init.target.rc:root/init.target.rc
-
-# These are the hardware-specific features
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    mobiledata.interfaces=pdp0,gprs,ppp0,rmnet0,rmnet1 \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10
-
-PRODUCT_PACKAGES += \
-	libsecril-client-sap \
-	SamsungServiceMode
+    device/samsung/n8000/rootdir/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/rootdir/init.target.usb.rc:root/init.target.usb.rc
 
 $(call inherit-product-if-exists, vendor/samsung/n8000/n8000-vendor.mk)
+
+# Vendor properties
+-include $(LOCAL_PATH)/vendor_prop.mk

@@ -1,7 +1,8 @@
+import /init.target.usb.rc
+
 on init
     export LD_SHIM_LIBS /system/lib/libsec-ril.so|libsamsung_symbols.so
-    
-    # cpu freq
+
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/boost_freq
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/boost_lock_time
@@ -13,7 +14,6 @@ on init
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/cpucore_table
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/down_differential
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/dvfs_debug
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/freq_for_responsiveness
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/freq_step
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/hotplug_freq_1_1
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/hotplug_freq_2_0
@@ -30,22 +30,31 @@ on init
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/hotplug_rq_4_0
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/ignore_nice_load
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/io_is_busy
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/max_cpu_lock
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/min_cpu_lock
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/sampling_down_factor
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/sampling_rate
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/sampling_rate_min
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/up_nr_cpus
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/up_threshold
-    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/up_threshold_at_min_freq
+    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/min_cpu_lock
+    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/max_cpu_lock
+    chown system system /sys/devices/system/cpu/cpufreq/pegasusq/sampling_rate
+
+on boot
+    # Flash storage isn't a good entropy source, and only causes
+    # locking overhead in the kernel. Turn it off.
+    write /sys/block/mmcblk0/queue/add_random 0
+    write /sys/block/mmcblk1/queue/add_random 0
+
+    # Swapping 1 page at a time is ok
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 100
+
+    # increase read-ahead value to 256 kb
+    write /sys/block/mmcblk0/queue/read_ahead_kb 256
 
 on post-fs-data
 
-    # serial keyboard port
+# serial keyboard port
 	chown root system /dev/ttySAC2
 	chmod 0660 /dev/ttySAC2
 
-    # icd
+# icd
     exec icd_check
     chown system system /dev/icd
     chmod 0644 /dev/icd
@@ -54,14 +63,14 @@ on post-fs-data
     chmod 0644 /dev/icdr
     chown system system /dev/tzic
 
-    # IR_LED
+# IR_LED
     chown system radio /sys/class/sec/sec_ir/ir_send
     chown system radio /sys/class/sec/sec_ir/ir_send_result
 
-    # make param block device link for SysScope
+# make param block device link for SysScope
     symlink /dev/block/mmcblk0p4 /dev/block/param
 
-    # GPS init
+# GPS init
     mkdir /data/gps
     chown gps system /data/gps
     chmod 1770 /data/gps
@@ -89,34 +98,27 @@ on property:init.svc.macloader=stopped
     chown system root /data/.rev
     chmod 0666 /data/.rev
 
+on fs
+    # zram
+    swapon_all /fstab.smdk4x12
+
 on boot
+# cbd
+service cpboot-daemon /system/bin/cbd -d
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw log
+    seclabel u:r:cpboot-daemon:s0
 
 # serial keyboard daemon
-service sec_keyboard /system/bin/sec_keyboard /dev/ttySAC2
+service sec_keyboard /system/vendor/bin/sec_keyboard /dev/ttySAC2
 	class core
 	group system
 	seclabel u:r:sec_keyboard:s0
 
-#cbd
-service cpboot-daemon /system/bin/cbd -d -p7
-    class main
-    user root
-    group radio cache inet misc audio sdcard_rw log sdcard_r
-    seclabel u:r:cpboot-daemon:s0
-
 # Start GPS daemon
-service gps-daemon /system/bin/sh /system/vendor/bin/gps_daemon.sh
+service gps-daemon /vendor/bin/glgps
     class main
     socket gps seqpacket 0660 gps system
     user gps
-    group system inet sdcard_rw gps
-    seclabel u:r:glgps:s0
-
-# TVout
-#service TvoutService_C /system/vendor/bin/bintvoutservice
-#     class main
-#     user system
-#     group graphics
-
-#on property:ro.tvout.enable=false
-#     stop TvoutService_C
+    group system wakelock inet sdcard_rw sdcard_r

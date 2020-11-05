@@ -1,5 +1,0 @@
-# RIL
-/data/misc/radio(/.*)?                  u:object_r:radio_data:s0
-
-# Partitions
-/dev/block/mmcblk0p12                   u:object_r:userdata_block_device:s0

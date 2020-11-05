@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/n8000.mk
+    $(LOCAL_DIR)/lineage_n8000.mk
