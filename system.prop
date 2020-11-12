@@ -44,9 +44,6 @@ persist.sys.purgeable_assets=1
 # Better RAM management
 ro.HOME_APP_ADJ=1
 
-# Low memory device
-ro.config.low_ram=true
-
 # Force high-end graphics in low ram mode
 persist.sys.force_highendgfx=true
 
