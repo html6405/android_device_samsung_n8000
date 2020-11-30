@@ -23,3 +23,7 @@ TARGET_BUILD_VARIANT:=user
 TARGET_OTA_ASSERT_DEVICE := c0,p4noterf,p4noterfxx,n8000,GT-N8000
 N8000 := true
 TARGET_KERNEL_CONFIG := lineageos_n8000_defconfig
+
+# Selinux
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/n8000/selinux
