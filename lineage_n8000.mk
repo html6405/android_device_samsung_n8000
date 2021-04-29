@@ -2,8 +2,8 @@
 PRODUCT_RELEASE_NAME := n8000
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/smdk4412-common/common.mk)
 $(call inherit-product, device/samsung/n80xx-common/n80xx-common.mk)
+$(call inherit-product, device/samsung/smdk4412-common/common.mk)
 $(call inherit-product, device/samsung/n8000/n8000.mk)
 
 # Inherit from the common Open Source product configuration
