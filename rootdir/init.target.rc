@@ -115,14 +115,14 @@ on fs
 
 on boot
 # cbd
-service cpboot-daemon /system/bin/cbd -d
+service cpboot-daemon /vendor/bin/cbd -d
     class main
     user root
     group radio cache inet misc audio sdcard_rw log
     seclabel u:r:cpboot-daemon:s0
 
 # serial keyboard daemon
-service sec_keyboard /system/vendor/bin/sec_keyboard /dev/ttySAC2
+service sec_keyboard /vendor/bin/sec_keyboard /dev/ttySAC2
 	class core
 	group system
 	seclabel u:r:sec_keyboard:s0
