@@ -1,7 +1,7 @@
 import /init.target.usb.rc
 
 on init
-    export LD_SHIM_LIBS /system/lib/libsec-ril.so|libsamsung_symbols.so
+    export LD_SHIM_LIBS /vendor/lib/libsec-ril.so|libsamsung_symbols.so
 
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/boost_freq
