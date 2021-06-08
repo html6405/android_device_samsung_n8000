@@ -23,4 +23,6 @@ N8000 := true
 TARGET_KERNEL_CONFIG := lineageos_n8000_defconfig
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/smdk4412-common/selinux
+BOARD_SEPOLICY_DIRS += device/samsung/n80xx-common/selinux/vendor
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/samsung/n80xx-common/selinux/public
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/samsung/n80xx-common/selinux/private
