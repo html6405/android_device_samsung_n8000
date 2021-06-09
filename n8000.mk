@@ -20,8 +20,8 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Rootdir
 PRODUCT_COPY_FILES += \
-    device/samsung/n8000/rootdir/init.target.rc:root/init.target.rc \
-    $(LOCAL_PATH)/rootdir/init.target.usb.rc:root/init.target.usb.rc
+    $(LOCAL_PATH)/rootdir/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.target.rc \
+    $(LOCAL_PATH)/rootdir/init.target.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.target.usb.rc
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
