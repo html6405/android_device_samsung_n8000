@@ -66,13 +66,13 @@ on post-fs-data
 	chmod 0660 /dev/ttySAC2
 
 # icd
-    exec icd_check
-    chown system system /dev/icd
-    chmod 0644 /dev/icd
-    write /dev/icdr 0
-    chown system system /dev/icdr
-    chmod 0644 /dev/icdr
-    chown system system /dev/tzic
+#    exec icd_check
+#    chown system system /dev/icd
+#    chmod 0644 /dev/icd
+#    write /dev/icdr 0
+#    chown system system /dev/icdr
+#    chmod 0644 /dev/icdr
+#    chown system system /dev/tzic
 
 # IR_LED
     chown system radio /sys/class/sec/sec_ir/ir_send
