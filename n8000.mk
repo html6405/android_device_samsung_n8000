@@ -27,6 +27,7 @@ DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
 
 # RIL
 PRODUCT_PACKAGES += \
+    libril \
     libsecril-client \
     libsecril-client-sap \
 	libsecril-shim
