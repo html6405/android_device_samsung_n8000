@@ -17,6 +17,11 @@
 #
 # system.prop for n8000
 #
+# Display
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.exynos4.refresh_rate_millihz=60000 \
+    ro.surface_flinger.enable_frame_rate_override=false
+
 PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.dexopt-data-only=1 \
 	dalvik.vm.dex2oat-Xmx=256m \
