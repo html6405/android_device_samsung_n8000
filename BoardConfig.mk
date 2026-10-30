@@ -17,6 +17,9 @@
 # Include n80xx BoardConfigCommon
 -include device/samsung/n80xx-common/BoardConfigCommon.mk
 
+# 2 GiB SYSTEM layout: 648 MiB are taken from CACHE.
+BOARD_CACHEIMAGE_PARTITION_SIZE := 159383552
+
 # assert
 TARGET_OTA_ASSERT_DEVICE := c0,p4noterf,p4noterfxx,n8000,GT-N8000
 N8000 := true
