@@ -2,8 +2,6 @@ import /vendor/etc/init/hw/init.target.usb.rc
 import /vendor/etc/init/hw/init.n80xx.rc
 
 on init
-    export LD_SHIM_LIBS /vendor/lib/libsec-ril.so|libsamsung_symbols.so
-
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/boost_freq
     chown system system /sys/devices/system/cpu/cpufreq/pegasusq/boost_lock_time
