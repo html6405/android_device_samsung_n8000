@@ -3,8 +3,10 @@
 ## 2026-11-13 — experimental
 
 - Updated Exynos4 graphics compatibility for the legacy Mali-400 GLES renderer and EGL behavior.
+- Kept SurfaceFlinger screenshot layers alive while deferred rendering completes, with regression coverage for layer removal and cross-thread cleanup. A GT-N8000 run also completed 20 captures across ten Settings/Home cycles without restarting SurfaceFlinger; this does not establish a fix for the separate Mali `eglQuerySurface` crashes.
 - Improved legacy Samsung device support across USB FunctionFS, GPS, RIL/mobile-data compatibility, software audio decoding, and WebView GLES2 video rendering.
 - Added or refined shared dock handling, including legacy 30-pin dock detection, configurable analog-dock audio behavior, and USB function selection. IR remote and `sec_keyboard` docking station operation were confirmed on the test device.
+- Added an optional P4NOTE repeated-router-advertisement offload experiment in the kernel. It is disabled by default and is not a general Wi-Fi performance fix.
 - Restored the recovery-patch opt-out and omitted the unused standalone recovery image from the ROM package, reducing package size.
 - Updated kernel-side Exynos4 device support. Further behavior and stability testing is still in progress.
 
