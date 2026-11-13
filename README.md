@@ -9,6 +9,8 @@ Device configuration for **unofficial LineageOS 23.2 / Android 16**, maintained 
 - [SHA-256 checksum](https://github.com/html6405/android_device_samsung_n8000/releases/download/lineage-23.2-20261113/lineage-23.2-20261113-HTML6405-n8000.zip.sha256sum)
 - [Previous 2026-11-08 release](https://github.com/html6405/android_device_samsung_n8000/releases/tag/lineage-23.2-20261108)
 
+2026-11-13 build: **689,968,737 bytes**; SHA-256: `5548c3ae73d84b85c6d0fedf1b3ffc5eddf825f0cfe07778d0b642d4068beaab`.
+
 This is a development preview. Current testing is on a **32 GB GT-N8000**; 16 GB units and other variants are not verified. **N8010, N8013 and N8020 require their own builds.**
 
 ## Required partition layout and installation

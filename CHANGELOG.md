@@ -2,6 +2,9 @@
 
 ## 2026-11-13 — experimental
 
+ROM package: `lineage-23.2-20261113-HTML6405-n8000.zip` (689,968,737 bytes)  
+SHA-256: `5548c3ae73d84b85c6d0fedf1b3ffc5eddf825f0cfe07778d0b642d4068beaab`
+
 - Updated Exynos4 graphics compatibility for the legacy Mali-400 GLES renderer and EGL behavior.
 - Kept SurfaceFlinger screenshot layers alive while deferred rendering completes, with regression coverage for layer removal and cross-thread cleanup. A GT-N8000 run also completed 20 captures across ten Settings/Home cycles without restarting SurfaceFlinger; this does not establish a fix for the separate Mali `eglQuerySurface` crashes.
 - Improved legacy Samsung device support across USB FunctionFS, GPS, RIL/mobile-data compatibility, software audio decoding, and WebView GLES2 video rendering.
