@@ -18,11 +18,8 @@
 # system.prop for n8000
 #
 # Display
-# Match the LOS21 framebuffer queue explicitly. The legacy BoardConfig value
-# is supplied through ConfigStore, which the Composer3 setup no longer ships.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.exynos4.refresh_rate_millihz=60000 \
-    ro.surface_flinger.max_frame_buffer_acquired_buffers=3 \
     ro.surface_flinger.enable_frame_rate_override=false
 
 # The XMM6262 RIL cannot handle IPv4-only responses to dual-stack requests.
