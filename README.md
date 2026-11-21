@@ -7,7 +7,7 @@ Device configuration for **unofficial LineageOS 21 / Android 14**, maintained by
 - [2026-11-21 experimental LineageOS 21 release](https://github.com/html6405/android_device_samsung_n8000/releases/tag/lineage-21.0-20261121) · [ROM ZIP](https://github.com/html6405/android_device_samsung_n8000/releases/download/lineage-21.0-20261121/lineage-21.0-20261121-HTML6405-n8000.zip) · [SHA-256](https://github.com/html6405/android_device_samsung_n8000/releases/download/lineage-21.0-20261121/lineage-21.0-20261121-HTML6405-n8000.zip.sha256).
 - [GT-N8000 release archive](https://github.com/html6405/android_device_samsung_n8000/releases) — contains multiple Android versions; select a release explicitly marked LineageOS 21 for this model.
 - [LOS21 changelog and pending changes](CHANGELOG.md).
-- [Shared N80xx model overview](https://github.com/html6405/android_device_samsung_n80xx-common/tree/lineage-21.0).
+- [Shared N80xx model overview](https://github.com/html6405/android_device_samsung_n80xx-common/tree/lineage-21.0-2026).
 
 The **2026-11-21 experimental LOS21 release** retains the known SurfaceFlinger standby/resume crash and intermittent green Prime preview artifacts. It is not a stable release. Current testing uses an existing 16 GB GT-N8000 installation; it does not validate every storage variant, clean installation or Google-apps combination. **N8010, N8013 and N8020 require their own builds.** The LOS23.2 release in this repository is a different product/version.
 
@@ -25,15 +25,15 @@ An update of the existing compatible LOS21 test installation through TWRP 3.7.0_
 
 ## Bring-up status
 
-Evidence below distinguishes the earlier 2026-11-21 integration tests from the final LOS21 candidate with fresh metadata and HEVC advertisement disabled. It does not describe the LOS23.2 release or other models.
+Evidence below distinguishes the earlier 2026-11-21 integration tests from the published LOS21 build with fresh metadata and HEVC advertisement disabled. It does not describe the LOS23.2 release or other models.
 
 | Feature | Current LOS21 evidence |
 | --- | --- |
 | Boot / graphics | Final candidate boots with kernel build #11 and reaches Android. The SurfaceFlinger `app`-thread SIGSEGV reproduced after longer standby/resume on the earlier candidate remains unresolved; no repair is claimed. |
 | DT2W | A missing secure setting defaults to enabled after reboot. Setting changes reach the kernel, and a double-tap event was observed. |
-| AVC / Prime previews | Matching cropped AVC probe improves from 94/96 to 96/96 frames; final-candidate 96-frame and five seek/flush checks pass. Prime was exercised, but intermittent green preview lines reappeared even with HEVC hidden. That issue is not fixed, and HEVC causality is not established. General DRM/player compatibility remains unvalidated. |
-| HEVC | **Intentionally not advertised in the final candidate** through OMX/C2 declarations; runtime registry reports zero HEVC decoders. HEVC-only platform playback is unsupported in this package. Earlier software-OMX tests showed functional 480p/720p and only about 18–22 fps at 1080p; those historical results do not mean HEVC is enabled in the final ROM. Hiding capabilities is a workaround, not a decoder repair or a proven cure for the green previews. |
-| Bluetooth / call audio | AIF2-Slave restoration and post-SCO speaker-level fixes are built and installed. Repeated real two-way headset calls and post-call audio still require LOS21 testing. WBS/CVSD stack adaptation is not in this candidate. |
+| AVC / Prime previews | Matching cropped AVC probe improves from 94/96 to 96/96 frames; release-build 96-frame and five seek/flush checks pass. Prime was exercised, but intermittent green preview lines reappeared even with HEVC hidden. That issue is not fixed, and HEVC causality is not established. General DRM/player compatibility remains unvalidated. |
+| HEVC | **Intentionally not advertised in the released build** through OMX/C2 declarations; runtime registry reports zero HEVC decoders. HEVC-only platform playback is unsupported in this package. Earlier software-OMX tests showed functional 480p/720p and only about 18–22 fps at 1080p; those historical results do not mean HEVC is enabled in the final ROM. Hiding capabilities is a workaround, not a decoder repair or a proven cure for the green previews. |
+| Bluetooth / call audio | AIF2-Slave restoration and post-SCO speaker-level fixes are built and installed. Repeated real two-way headset calls and post-call audio still require LOS21 testing. WBS/CVSD stack adaptation is not in this build. |
 | RIL / mobile data | RIL starts in its intended SELinux domain. Voice, SMS and data operation are not functionally validated by this test cycle. |
 | GPS / Wi-Fi | Services and scoped labels/rules were checked; the old reported denials did not recur in the short captures. Outdoor GPS acquisition, broader Wi-Fi behavior and hotspot need separate tests. |
 | S Pen / keyboard / docks | S-Pen gesture node has the intended label. The PID-based `sec_keyboard_kill` workaround is retained and the daemon restarts after wake. Full pen behavior, physical dock/Space-key wake and analog-dock routes remain unverified. |
@@ -50,15 +50,17 @@ SELinux remained **Enforcing** during these LOS21 tests. Existing legacy excepti
 
 Prepare this explicitly experimental LOS21 package with the unresolved SurfaceFlinger and green-preview issues visible, using a distinct `lineage-21.0-YYYYMMDD` tag. Each published release should include its exact model-specific ZIP, SHA-256 sidecar, `source-revisions.json`, manifest and source supplement with matching checksums. Record the actual artifact name, size, source state and test limits in the release body, this README and `CHANGELOG.md`; the shared N80xx README then links to that release. Publication is not a declaration that the remaining functional/stability tests passed.
 
-The final candidate was built with regenerated configuration and fresh OTA metadata: `post-timestamp=1795288401`, incremental `eng.html64.20261121.201321`. This replaces the stale 2025-04-05 fields of the earlier integration archive. The existing security-patch level remains **2024-08-05**; a fresh build date is not a new security patch. Updater is configured for the LOS21 feed and model-specific GitHub release archive; actual OTA delivery is a separate check.
+The released build was built with regenerated configuration and fresh OTA metadata: `post-timestamp=1795288401`, incremental `eng.html64.20261121.201321`. This replaces the stale 2025-04-05 fields of the earlier integration archive. The existing security-patch level remains **2024-08-05**; a fresh build date is not a new security patch. Updater is configured for the LOS21 feed and model-specific GitHub release archive; actual OTA delivery is a separate check.
 
 ## Sources and building
 
-This repository contains the device configuration, not the entire Android platform. Matching shared device trees, proprietary files, kernel and platform patches are required. The release tag points to the public device-tree baseline, not the full compiled Android tree. The release assets include a pinned manifest, source revisions and a selected source supplement capturing local integration changes, including committed changes relative to public anchors. This is provenance for the supplied snapshot, not a claim that every local source repository has been publicly synchronized or that a GitHub tag archive alone reproduces the ROM.
+Maintained source branches use **`lineage-21.0-2026`**. The [pinned source manifest](release-source-manifest.xml) selects the matching device trees, kernel, hardware and platform revisions. Proprietary vendor files are required separately.
 
-- [n80xx-common LOS21](https://github.com/html6405/android_device_samsung_n80xx-common/tree/lineage-21.0)
-- [smdk4412-common LOS21](https://github.com/html6405/android_device_samsung_smdk4412-common/tree/lineage-21.0)
-- [Exynos4 kernel LOS21](https://github.com/html6405/android_kernel_samsung_smdk4412/tree/lineage-21.0)
+The release tag records the original public device-tree baseline. The release assets retain the original manifest/revision/source-supplement records; the maintained branches now contain the same tested code with individual fixes and their backport origins. A device-tree tag archive alone is not the complete Android build tree.
+
+- [n80xx-common LOS21](https://github.com/html6405/android_device_samsung_n80xx-common/tree/lineage-21.0-2026)
+- [smdk4412-common LOS21](https://github.com/html6405/android_device_samsung_smdk4412-common/tree/lineage-21.0-2026)
+- [Exynos4 kernel LOS21](https://github.com/html6405/android_kernel_samsung_smdk4412/tree/lineage-21.0-2026)
 
 With the matching local Android 14 build tree and dependencies in place:
 
