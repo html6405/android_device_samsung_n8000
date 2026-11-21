@@ -1,5 +1,24 @@
 # GT-N8000 LineageOS 23.2 preview changelog
 
+## 2026-11-21 — experimental
+
+ROM package: `lineage-23.2-20261121-HTML6405-n8000.zip` (690,405,912 bytes)
+SHA-256: `443563c69c8e1ff5ead5d74f8af8210e3a8418833335f779e0b57074d44a13c5`
+
+- Temporarily stop advertising HEVC decoders on Exynos4 while HEVC playback remains unresolved. AVC and audio codec configuration is retained. The final packaged ROM passed a Prime playback and forward/backward seek smoke test using Samsung AVC, with a smooth start and good audio reported by the user. HEVC-only platform playback remains unsupported.
+
+- Correct cropped AVC output buffer reallocation and reset stale MFC frames after seeking. The tested 960×540 Prime stream now uses 960×544 buffers instead of 1920×1080. The final packaged-ROM smoke test confirmed playback and forward/backward seeking; broader app coverage remains pending.
+
+- Known issue: one transient partial-image freeze was observed after seeking in Prime and recovered spontaneously. Subsequent forward/backward seek tests with diagnostic logging were clean; the issue is not established as fixed. The diagnostic library is not intended for release.
+
+- Bluetooth call audio through the tested Dots passed in both directions on the 2026-11-21 GT-N8000 ROM. Media audio through the Dots also worked after hanging up. This was a Permissive test with the HEVC-only runtime configuration; final Enforcing and broader headset coverage remain pending.
+
+- A short camera recording and local Gallery playback passed with picture, sound and forward seeking on the tested GT-N8000. Logs confirm Samsung AVC encoding and Gallery AVC hardware decoding. These checks used the 2026-11-21 Permissive ROM with the HEVC-only runtime configuration.
+
+- An unplugged sleep test on the earlier candidate with the same source configuration captured about two hours of cumulative suspend over a 2 h 20 min window. Battery fell from 100% to 97%; the user reported about three seconds to display wake and then responsive UI. Overnight battery life and long-term stability remain unverified.
+
+- This remains a Vanilla, experimental userdebug release with SELinux Permissive, existing domain exceptions and kernel debug history enabled. GApps/microG variants and their persistence across Vanilla OTA updates are not validated. The final package was flashed without wiping data; recovery and storage metadata were preserved.
+
 ## 2026-11-13 — experimental
 
 ROM package: `lineage-23.2-20261113-HTML6405-n8000.zip` (689,968,737 bytes)  
