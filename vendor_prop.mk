@@ -89,3 +89,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.supplicant_scan_interval=240
 # XMM6262 vendor RIL misparses IPv4 responses to dual-stack requests.
 PRODUCT_VENDOR_PROPERTIES += ro.vendor.ril.ipv4_only=true
+
+# Keep HFP calls on the legacy CVSD modem path.
+PRODUCT_VENDOR_PROPERTIES += bluetooth.hfp.wbs.supported=false
