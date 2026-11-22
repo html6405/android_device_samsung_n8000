@@ -4,6 +4,31 @@
 
 The maintained repositories use `lineage-21.0-2026`; see the [pinned source manifest](release-source-manifest.xml). Backports are recorded as individual fixes with their original source or explicit LOS21 adaptation. This source-history/documentation cleanup does not change the published ROM ZIP.
 
+## 2026-11-22 — Experimental
+
+[Release](https://github.com/html6405/android_device_samsung_n8000/releases/tag/lineage-21.0-20261122) · [ROM](https://github.com/html6405/android_device_samsung_n8000/releases/download/lineage-21.0-20261122/lineage-21.0-20261122-HTML6405-n8000.zip) · [SHA-256 sidecar](https://github.com/html6405/android_device_samsung_n8000/releases/download/lineage-21.0-20261122/lineage-21.0-20261122-HTML6405-n8000.zip.sha256).
+
+`lineage-21.0-20261122-HTML6405-n8000.zip` — **618126733 bytes**, SHA-256 `95402542b87045b5be9d3027d1180406e3d25e5745f02191a4f72816ecdb1df7`. Android 14; security patch **2024-08-05** unchanged. OTA incremental `eng.html64.20261122.085904`, timestamp `1795334343`.
+
+### Changes and evidence
+
+- Restore working Bluetooth cellular call audio with the legacy-controller CVSD policy and matching RIL audio-path ABI/enum corrections; preserve the prior AIF2/SCO mixer fixes. Two-way headset calls, Bluetooth media and speaker playback passed the observed tests. Call volume routing and cached-volume reapplication are corrected.
+- Complete skipped single-SIM data commands and publish a subscription that becomes ready late; the user confirmed the mobile-data indication. This is not exhaustive carrier/APN/SMS validation.
+- Route the Exynos4 audio service's framework AIDL clients through system Binder and permit typed SystemSuspend access. A 26-acquisition wake-lock probe passed (about 68 ms total); prior missing-SystemSuspend errors did not recur in the checked interval.
+- Label the legacy Mali/UMP/secion/gralloc/mapper/allocator libraries for in-process use and permit the observed radio-domain ION write. The previous Phone UI EGL/allocator crash was resolved in the tested path.
+- Report the standard Wacom pen-inserted switch; The input device now exposes SW_PEN_INSERTED instead of SW_MUTE_DEVICE; the false hardware microphone block cleared after reboot. The user completed pen and microphone/privacy checks. DT2W and the refined sec_keyboard_kill workaround remain enabled/preserved.
+- Permit the observed Wi-Fi helper file-attribute lookup. Attempts by RIL to inspect private application database paths remain intentionally blocked; the fallback is retained.
+
+### Remaining limits
+
+SurfaceFlinger long-standby/resume SIGSEGV remains open: the latest short regression test does not establish a long-term fix. Intermittent green Prime preview artifacts remain unresolved. HEVC stays deliberately unadvertised; no HEVC/DRM compatibility claim. Camera remains HAL1/OpenCamera; Camera3/Aperture migration and GPS changes are deferred. No required keyboard/Bluetooth workaround was removed.
+
+The latest no-USB test measured **26m59s cumulative real system suspend** across nine sleep/resume cycles, with the same boot and no new crash, ANR, tombstone or SELinux denial after its baseline. This was not one continuous long sleep. SIM had been deliberately removed during that interval, so the earlier cellular tests are separate evidence.
+
+SELinux is **Enforcing**, but `SELINUX_IGNORE_NEVERALLOWS := true` and existing legacy exceptions remain. An independent assertion-enabled CIL check fails with **344 existing violation blocks** both before and after subtracting the ten new audio-Binder/radio-ION grants; no additional normalized violation was reported for those grants. This is not full neverallow or security compliance. Security patch level remains **2024-08-05**.
+
+The 2026-11-21 entry below is historical and describes that earlier package, including tests that were still pending then.
+
 ## 2026-11-21 — Experimental
 
 Current evidence: published 2026-11-21 LOS21 experimental build, Android 14, kernel build #11, SELinux Enforcing. [Release and assets](https://github.com/html6405/android_device_samsung_n8000/releases/tag/lineage-21.0-20261121). This experimental publication is not a claim that the remaining known crashes are fixed.

@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <manifest>
   <remote name="aosp" fetch="https://android.googlesource.com" review="android-review.googlesource.com" revision="refs/tags/android-14.0.0_r53" />
-  <remote name="github" fetch=".." review="review.lineageos.org" />
+  <remote name="github" fetch="https://github.com/" review="review.lineageos.org" />
   <remote name="losul" fetch="https://github.com/" revision="refs/heads/lineage-21.0" />
-  <remote name="private" fetch="ssh://git@github.com" />
   <default remote="github" revision="refs/heads/lineage-21.0" sync-j="4" sync-c="true" />
   <project name="LineageOS-UL/android_art" path="art" remote="losul" revision="a87a5321e0c34ad351592ef88ed7d573a4a58f38" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
   <project name="html6405/android_bionic" path="bionic" remote="html6405-release" revision="09b7c669806769438da4fabf450c8f273ba5480e" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
@@ -31,7 +30,7 @@
   <project name="LineageOS-UL/android_frameworks_ex" path="frameworks/ex" remote="losul" revision="b50e8cd5237e83ca6f4be59f7e74f068a9c2fb2a" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" groups="pdk-cw-fs,pdk-fs" />
   <project name="html6405/android_frameworks_native" path="frameworks/native" remote="html6405-release" revision="83472e6c4efd4aa36914c0398390e4552709fddf" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
   <project name="LineageOS-UL/android_frameworks_opt_net_wifi" path="frameworks/opt/net/wifi" remote="losul" revision="73918c2a54319d1e9e12f084380b3de4411d6b0a" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
-  <project name="LineageOS-UL/android_frameworks_opt_telephony" path="frameworks/opt/telephony" remote="losul" revision="2463e5ddd7bb9345ce69c3a2b28c2db998bb3c90" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
+  <project name="html6405/android_frameworks_opt_telephony" path="frameworks/opt/telephony" remote="html6405-release" revision="176e73c30730f29d80f46ef5dea33c806cfe853b" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
   <project name="LineageOS-UL/android_hardware_broadcom_nfc" path="hardware/broadcom/nfc" remote="losul" revision="5e07a5b4b6dd32435455b550dc2d4c96d1d71ee1" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
   <project name="LineageOS-UL/android_hardware_interfaces" path="hardware/interfaces" remote="losul" revision="a334f3151c47aa5f6171fef322dbb700e30a8ac5" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
   <project name="LineageOS-UL/android_hardware_libhardware_legacy" path="hardware/libhardware_legacy" remote="losul" revision="33010f1c36653127f5c95b84e792aec47700166e" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
@@ -90,7 +89,7 @@
   <project name="LineageOS-UL/android_hardware_qcom_media" path="hardware/qcom-caf/msm8994/media" revision="f21b36368dededbc42ebabb42a450564e029096b" upstream="lineage-21.0-caf-msm8994" dest-branch="lineage-21.0-caf-msm8994" groups="qcom,pdk-qcom" />
   <project name="LineageOS-UL/android_hardware_ril" path="hardware/ril" remote="losul" revision="28db5522c9783a682673e866db9261d6c35f252a" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
   <project name="LineageOS-UL/android_packages_apps_Nfc" path="packages/apps/Nfc" remote="losul" revision="c10819e7e59fb93e0f4679d905926573da38fe26" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
-  <project name="LineageOS-UL/android_packages_modules_Bluetooth" path="packages/modules/Bluetooth" remote="losul" revision="913d507cac1d1925ee94c3c46de6798fb45510d2" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
+  <project name="html6405/android_packages_modules_Bluetooth" path="packages/modules/Bluetooth" remote="html6405-release" revision="2722dc33cc4b975545f048f980d6804910bb869e" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
   <project name="LineageOS-UL/android_packages_modules_Connectivity" path="packages/modules/Connectivity" remote="losul" revision="76e1ed20e9b86761c7231eb8e0d8a8c3d1da812b" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" />
   <project name="LineageOS-UL/android_packages_modules_DeviceLock" path="packages/modules/DeviceLock" remote="losul" revision="9f35efa6e5d2bb2d72998c0444958f84ad327c87" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" groups="pdk-cw-fs,pdk-fs" />
   <project name="LineageOS-UL/android_packages_modules_DnsResolver" path="packages/modules/DnsResolver" remote="losul" revision="70d3ad7f3aa68750dcb2860e2f14f52e07369a55" upstream="refs/heads/lineage-21.0" dest-branch="refs/heads/lineage-21.0" groups="pdk-cw-fs,pdk-fs" />
@@ -1419,7 +1418,7 @@
   <project name="platform/system/libvintf" path="system/libvintf" remote="aosp" revision="9b4243f75511030285417c2324d3e53fca23bf25" upstream="refs/tags/android-14.0.0_r53" dest-branch="refs/tags/android-14.0.0_r53" groups="pdk" />
   <project name="platform/system/linkerconfig" path="system/linkerconfig" remote="aosp" revision="4d7afd61b0361e6eb4c8b3973ace09e7825e8a09" upstream="refs/tags/android-14.0.0_r53" dest-branch="refs/tags/android-14.0.0_r53" groups="pdk" />
   <project name="platform/system/memory/libdmabufheap" path="system/memory/libdmabufheap" remote="aosp" revision="5adc1d6298f8b1d66c5af11862ad09b9e05552bc" upstream="refs/tags/android-14.0.0_r53" dest-branch="refs/tags/android-14.0.0_r53" groups="pdk" />
-  <project name="platform/system/memory/libion" path="system/memory/libion" remote="aosp" revision="6dd339b5d5380881524f8eb3da6a560f521972dd" upstream="refs/tags/android-14.0.0_r53" dest-branch="refs/tags/android-14.0.0_r53" groups="pdk" />
+  <project name="html6405/android_system_memory_libion" path="system/memory/libion" remote="html6405-release" revision="6dd339b5d5380881524f8eb3da6a560f521972dd" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" groups="pdk" />
   <project name="platform/system/memory/libmeminfo" path="system/memory/libmeminfo" remote="aosp" revision="aee59e17156fbcddc13051f92180cec8c1b2c278" upstream="refs/tags/android-14.0.0_r53" dest-branch="refs/tags/android-14.0.0_r53" groups="pdk" />
   <project name="platform/system/memory/libmemtrack" path="system/memory/libmemtrack" remote="aosp" revision="8c26af722f219bd167b84b3ff37944c47136e70f" upstream="refs/tags/android-14.0.0_r53" dest-branch="refs/tags/android-14.0.0_r53" groups="pdk" />
   <project name="platform/system/memory/libmemunreachable" path="system/memory/libmemunreachable" remote="aosp" revision="e2ada4f7e54d357a339bae325aa4ebed92d1fdb2" upstream="refs/tags/android-14.0.0_r53" dest-branch="refs/tags/android-14.0.0_r53" groups="pdk" />
@@ -1520,10 +1519,10 @@
   <superproject name="platform/superproject" remote="aosp" revision="android-14.0.0_r53" />
   <contactinfo bugurl="go/repo-bug" />
   <remote name="html6405-release" fetch="https://github.com/" />
-  <project name="html6405/android_device_samsung_n8000" path="device/samsung/n8000" remote="html6405-release" revision="5b86949a03ab13f587b3891fd398480b2d791d53" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
-  <project name="html6405/android_device_samsung_n80xx-common" path="device/samsung/n80xx-common" remote="html6405-release" revision="db84cfaaed5c949a81dd57dc23fa0a1ba194a3e4" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
-  <project name="html6405/android_device_samsung_smdk4412-common" path="device/samsung/smdk4412-common" remote="html6405-release" revision="300d4baf65bbe8e6caa13d5a65a727f20480442e" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
+  <project name="html6405/android_device_samsung_n8000" path="device/samsung/n8000" remote="html6405-release" revision="eabae2bcd1a9696b80987a16a6eb4d778b4c861b" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
+  <project name="html6405/android_device_samsung_n80xx-common" path="device/samsung/n80xx-common" remote="html6405-release" revision="d6408555d28b8620a3202d1578a6b89c04c20195" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
+  <project name="html6405/android_device_samsung_smdk4412-common" path="device/samsung/smdk4412-common" remote="html6405-release" revision="fc022beff49053bd5a970676aa77fbdf65622bf5" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
   <project name="html6405/android_hardware_samsung" path="hardware/samsung" remote="html6405-release" revision="4217bd001bbf9c7ac7ec98929581810f03ec546c" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
-  <project name="html6405/android_kernel_samsung_smdk4412" path="kernel/samsung/smdk4412" remote="html6405-release" revision="2d10a18b6c2defbb020c28bc695ca9e3c1dfa940" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
+  <project name="html6405/android_kernel_samsung_smdk4412" path="kernel/samsung/smdk4412" remote="html6405-release" revision="829724c592e9752d3e7b5bdf8ae4450ce4f1446e" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
   <project name="html6405/android_packages_apps_SamsungServiceMode" path="hardware/samsung/SamsungServiceMode" remote="html6405-release" revision="484ee6e57774f069c0f0517ae68b927be1bf2825" upstream="refs/heads/lineage-21.0-2026" dest-branch="refs/heads/lineage-21.0-2026" />
 </manifest>
