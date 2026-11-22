@@ -14,7 +14,7 @@ Device configuration for **unofficial LineageOS 23.2 / Android 16**, maintained 
 
 The 2026-11-21 package remains a separate Permissive baseline: 690,405,912 bytes, SHA-256 `443563c69c8e1ff5ead5d74f8af8210e3a8418833335f779e0b57074d44a13c5`.
 
-This is a development preview. Current testing is on a **32 GB GT-N8000**; 16 GB units and other variants are not verified. **N8010, N8013 and N8020 require their own builds.**
+This is a development preview. Current testing is on a **32 GB GT-N8000**; 16 GB units and other variants are not verified. **N8010/N8013 share the separate N8010 build; N8020 also requires its own build.**
 
 ## Required partition layout and installation
 
