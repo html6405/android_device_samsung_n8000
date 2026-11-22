@@ -1,5 +1,19 @@
 # GT-N8000 LineageOS 23.2 preview changelog
 
+## 2026-11-22 — experimental Enforcing
+
+ROM package: `lineage-23.2-20261122-HTML6405-n8000.zip` (690,402,336 bytes)
+Incremental: `1795369378`
+SHA-256: `1f083b4ff63eaa0606b7243947323f1579a7cc5a0be0604edcc326fe29c28bd4`
+
+- Full ROM now boots SELinux Enforcing. Give the legacy ION heap-mask property an Exynos4 label, permit initialization by `vendor_init`, and allow the four observed Codec2 client domains to read it, addressing blocked audio-decoder buffer allocation. Existing domain exceptions/Neverallow violations and security hardening remain outstanding.
+- Retain the original dock keyboard driver without the failed experimental hotplug/wake changes. Automatic software-keyboard handling and reliable long dock sleep/wake remain unresolved.
+- Include the reviewed Vanilla OTA backuptool prerequisite correction for Lineage 23 and embedded SAR product discovery. Existing app-only microG survived one actual Vanilla update; this does not validate privileged addon.d preservation or two OTA cycles.
+- The exact full ZIP was installed without wiping/repartitioning; packaged kernel/readback matched. Post-update Enforcing boot, WLAN connectivity, YouTube Samsung hardware AVC playback, Maps rendering, retained microG self-check/options/grants and optional KernelSU manager recognition passed. SIM was absent before/after: calls/SMS/mobile data were not retested on this exact ZIP.
+- Earlier Enforcing runtime checks covered audio/Prime, Dots bidirectional calls followed by media, GPS, S Pen/sensors and suspend/wake. These remain earlier-runtime evidence, not a comprehensive new-ZIP regression pass.
+- HEVC remains disabled. Prime preview green bars, the earlier transient seek artifact, historical Mali crashes and the recurring `ueventd` crash class remain unresolved. No general stability-fix claim.
+- Vanilla ROM: no Google services, microG, Minimal-GApps or KernelSU Manager APK bundled. Optional manager 32680/UAPI 5 is linked in README; kernel 32676 retains full UID checks disabled and is not claimed hardened.
+
 ## 2026-11-21 — experimental
 
 ROM package: `lineage-23.2-20261121-HTML6405-n8000.zip` (690,405,912 bytes)
@@ -21,7 +35,7 @@ SHA-256: `443563c69c8e1ff5ead5d74f8af8210e3a8418833335f779e0b57074d44a13c5`
 
 ## 2026-11-13 — experimental
 
-ROM package: `lineage-23.2-20261113-HTML6405-n8000.zip` (689,968,737 bytes)  
+ROM package: `lineage-23.2-20261113-HTML6405-n8000.zip` (689,968,737 bytes)
 SHA-256: `5548c3ae73d84b85c6d0fedf1b3ffc5eddf825f0cfe07778d0b642d4068beaab`
 
 - Updated Exynos4 graphics compatibility for the legacy Mali-400 GLES renderer and EGL behavior.
