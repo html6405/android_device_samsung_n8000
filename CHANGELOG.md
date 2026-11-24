@@ -1,5 +1,12 @@
 # GT-N8000 LineageOS 23.2 preview changelog
 
+## 2026-11-24 — VFP kernel preview
+
+- Add the upstream ARM VFP hotplug fix to clear the cached hardware owner when a CPU goes offline.
+- The matching Boot-only test completed one long suspend/wake cycle with 13 h 42 min of cumulative suspend, unchanged core process IDs, SELinux Enforcing and an empty crash buffer on the tested hardware.
+- The signed full-ROM preview keeps the November 22 Android build identity. The complete ZIP passed host checks. Device validation used the same kernel installed through Boot only.
+- ROM SHA-256 `f8a6c543d7f1b0d2d9988fcc4846c03dd6d5df27aed4ec23962f8a1def6af9b5`. [Manual preview for GT-N8000](https://github.com/html6405/android_device_samsung_n8000/releases/tag/lineage-23.2-20261124-vfp-preview)
+
 ## 2026-11-22 — experimental Enforcing
 
 ROM package: `lineage-23.2-20261122-HTML6405-n8000.zip` (690,402,336 bytes)

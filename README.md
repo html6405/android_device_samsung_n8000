@@ -1,5 +1,7 @@
 # Samsung Galaxy Note 10.1 (3G) — GT-N8000
 
+[November 24 VFP kernel preview](https://github.com/html6405/android_device_samsung_n8000/releases/tag/lineage-23.2-20261124-vfp-preview) for GT-N8000. Install manually using the release instructions.
+
 Device configuration for **unofficial LineageOS 23.2 / Android 16**, maintained by [html6405](https://github.com/html6405). Device codenames include `p4noterf` / `p4noterfxx`.
 
 ## Downloads
@@ -39,7 +41,9 @@ The complete 2026-11-22 ZIP was flashed over the existing LOS 23 installation wi
 
 Known stability issues remain: historical Mali/SystemUI graphics crashes, intermittent USB/ADB transport and `ueventd` crashes in `UeventListener::ReadUevent`. The latter crash class is also documented on N8010 across earlier November builds and is **not fixed** by this release. Do not infer a new-ROM long-sleep pass from earlier runtime observations. An earlier Enforcing overnight observation retained responsive wake and about 8 h 14 min suspend-accounted time; battery fell 100% to 93% over about nine hours. This is neither a controlled battery benchmark nor validation of this complete ZIP.
 
-Google apps are not bundled. Individually installed standard microG Services **0.3.18.252432** and Companion survived **one actual Vanilla update** without wiping: signatures/spoofing self-check, retained UID and compared permissions, four registered GCM apps, YouTube hardware playback and Maps rendering passed. Incoming push delivery, Play Integrity, genuine Play Store, privileged add-on installation and two consecutive OTA cycles are not validated. The separately published [optional microG Recovery installer](https://github.com/html6405/exynos4-microg-installer/releases/tag/v0.1.0-rc1) recognizes GT-N8000. Its privileged installation and two repeat Vanilla OTA tests were performed on GT-N8010. Minimal-GApps testing is pending.
+Google apps are not bundled. Individually installed standard microG Services **0.3.18.252432** and Companion survived **one actual Vanilla update** without wiping: signatures/spoofing self-check, retained UID and compared permissions, four registered GCM apps, YouTube hardware playback and Maps rendering passed. Incoming push delivery and Play Integrity remain unverified for that test. The separately published [optional microG Recovery installer](https://github.com/html6405/exynos4-microg-installer/releases/tag/v0.1.0-rc1) recognizes GT-N8000. Its privileged installation and two repeat Vanilla OTA tests were performed on GT-N8010. Companion has also since been installed and booted under Enforcing on GT-N8000.
+
+**Recommended for daily use on GT-N8000: [microG with Companion](https://github.com/html6405/exynos4-microg-installer/releases/tag/v0.1.0-rc1).** The tester reported a substantially quicker return to the lock screen after switching to Companion. App launch timings varied with uptime, account state and background load. The [microG with the original Play Store](https://github.com/html6405/exynos4-microg-installer/releases/tag/v0.1.0-phonesky-r7) preview installed and launched a test app under Enforcing on GT-N8000 with the r7 system configuration. Full r7 ZIP, Store self-update and Vanilla OTA validation are pending.
 
 This remains an experimental `userdebug` release. SELinux Enforcing does not imply complete policy or security hardening: existing domain exceptions, `SELINUX_IGNORE_NEVERALLOWS`, unauthenticated bring-up ADB policy and the legacy kernel/vendor stack remain. KernelSU full UID checks are disabled; root security hardening remains outstanding.
 
